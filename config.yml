@@ -16,6 +16,14 @@ steps:
     event: issues.assigned
     actions:
       - type: respond
-        with: 00-configure.md
+        with: 01-configure.md
         store:
           configure_comment_url: '{{ result.data.html_url }}'
+  - title: Configure your R environment
+    description: Install packages and establish an RStudio project for the exercises in course
+    link: '{{ store.configure_comment_url }}'
+    event: issues.closed
+    actions:
+      - type: createIssue
+        title: Structure your code predictably
+        body: 10-structure.md
