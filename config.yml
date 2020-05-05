@@ -10,9 +10,12 @@ before:
     store:
       first_issue_url: '{{ result.data.html_url }}'
 steps:
-  - title: First step
-    description: The first step in your course
+  - title: Get the big picture
+    description: Learn about our goals and general approaches for data analysis pipelines
+    link: '{{ store.first_issue_url }}'
     event: issues.assigned
-    link: '{{ repoUrl }}'
     actions:
-      - type: closeIssue
+      - type: respond
+        with: 00-configure.md
+        store:
+          configure_comment_url: '{{ result.data.html_url }}'
