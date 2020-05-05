@@ -1,5 +1,5 @@
-title: 'USGS Data Science - Intro to Pipelines'
-description: Intro to Data Analysis Pipelines for USGS Data Science
+title: Intro to Pipelines
+description: Get an introduction to data analysis pipelines as we use them in the USGS Data Science Branch
 template:
   repo: ds-pipelines-1-template
   name: ds-pipelines-1
