@@ -5,8 +5,10 @@ template:
   name: ds-pipelines-1
 before:
   - type: createIssue
-    title: Welcome!
-    body: new-issue.md
+    title: Get started with USGS Data Science pipelines
+    body: 00-overview.md
+    store:
+      first_issue_url: '{{ result.data.html_url }}'
 steps:
   - title: First step
     description: The first step in your course
