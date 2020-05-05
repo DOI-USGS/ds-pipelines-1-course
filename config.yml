@@ -16,7 +16,7 @@ steps:
     event: issues.assigned
     actions:
       - type: respond
-        with: 00-configure.md
+        with: 01-configure.md
         store:
           configure_comment_url: '{{ result.data.html_url }}'
   - title: Configure your R environment
@@ -26,4 +26,4 @@ steps:
     actions:
       - type: createIssue
         title: Structure your code predictably
-        body: 01-structure.md
+        body: 10-structure.md
