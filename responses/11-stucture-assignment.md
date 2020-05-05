@@ -19,6 +19,8 @@ Create a two phase directory structure for "fetch" and "process" concepts, and i
 
 Git challenge: commit an empty directory (out). Make them google this 
 
+When you are done, open a pull request with the changes. 
+
 _You can follow the manual steps below, or accept the suggestions in the following comments._
 
 1. Edit your [workflow file]({{ fileUrl }})
@@ -53,4 +55,4 @@ _You can follow the manual steps below, or accept the suggestions in the followi
             CI: true
     ```
     
-I'll respond when you've edited your workflow file. 
+<hr><h3 align="center">I'll respond when I detect you've created a pull request.</h3>
