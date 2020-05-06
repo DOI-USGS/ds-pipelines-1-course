@@ -23,7 +23,7 @@ When you are done, open a pull request with the changes.
 
 _You can follow the manual steps below, or accept the suggestions in the following comments._
 
-1. Edit your [workflow file]({{ fileUrl }})
+1. Edit your [workflow file](fileUrl)
 1. Configure the `test` job to run only after the `build` job is completed (we'll use ellipses `...` to only show the parts of the workflow we're interested in, but you should not copy the ellipses directly):
     ```yaml
       test:
@@ -43,10 +43,10 @@ _You can follow the manual steps below, or accept the suggestions in the followi
           with: 
             name: webpack artifacts
             path: public
-        - name: Use Node.js {% raw %}${{ matrix.node-version }}{% endraw %}
+        - name: Use Node.js matrix.node-version
           uses: actions/setup-node@v1
           with:
-            node-version: {% raw %}${{ matrix.node-version }}{% endraw %}
+            node-version: matrix.node-version
         - name: npm install, and test
           run: |
             npm install
