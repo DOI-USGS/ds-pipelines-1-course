@@ -4,63 +4,97 @@ template:
   repo: ds-pipelines-1-template
   name: ds-pipelines-1
 before:
+  # 00 Get started
   - type: createIssue
     title: Get started with USGS Data Science pipelines
     body: 00-overview.md
     store:
-      first_issue_url: '{{ result.data.html_url }}'
+      overview_issue_url: '{{ result.data.html_url }}'
 steps:
   - title: Get the big picture
     description: Learn about our goals and general approaches for data analysis pipelines
-    link: '{{ store.first_issue_url }}'
+    link: '{{ store.overview_issue_url }}'
     event: issues.assigned
     actions:
       - type: respond
-        with: 01-configure.md
+        with: 01-install-activity.md
         store:
-          configure_comment_url: '{{ result.data.html_url }}'
+          install_activity_url: '{{ result.data.html_url }}'
   - title: Configure your R environment
-    description: Install packages and establish an RStudio project for the exercises in course
-    link: '{{ store.configure_comment_url }}'
-    event: issues.closed
+    description: Install packages and establish an RStudio project for the exercises in the course
+    link: '{{ store.install_activity_url }}'
+    event: issue_comment.created
     actions:
+      - type: gate
+        left: 'USGS Support Package'
+        operator: test
+        right: '%payload.comment.body%'
+        else:
+          - type: respond
+            with: 01a-install-fail.md
+      - type: respond
+        with: 01b-install-success.md
+      - type: closeIssue
+  # 10 Directory structure and decomposition
       - type: createIssue
         title: Structure your code predictably
-        body: 01-structure.md
+        body: 10-structure.md
         store:
           structure_issue_url: '{{ result.data.html_url }}'
-
-  # 20 Directory structure and phases
-  - title: Directory structure and phases
-    description: Team conventions for how our pipelines are organized
+          structure_issue_id: '{{ payload.issue.number }}'
+  - title: Directory structure and code decomposition
+    description: Learn about team conventions for we organize pipeline files and code
+    link: '{{ store.structure_url }}'
     event: issues.assigned
-    link: '{{ store.structure_issue_url }}'
     actions:
       - type: respond
-        with: 20-phases-overview.md
+        with: 11-structure-activity.md
         store:
-          phases_comment_url: '{{ result.data.html_url }}'
+          structure_activity_url: '{{ result.data.html_url }}'
   - title: Open a pull request for directory structure
-    description: Open a pull request.
+    description: Begin to organize code files according our team conventions
+    link: '{{ store.structure_activity_url }}'
     event: pull_request.opened
-    link: '{{ store.structure_issue_url }}'
     actions:
+      - type: createReview
+        body: 12-function-activity.md
+        event: REQUEST_CHANGES
+        store:
+          function_activity_url: '{{ result.data.html_url }}'
+  - title: Modify your pull request with code decomposition
+    description: Decompose code into functions
+    link: '{{ store.structure_activity_url }}'
+    event: pull_request.closed
+    actions:
+      - type: respond
+        with: xx-goto-next-issue.md
       - type: closeIssue
-        issue: Welcome
-        action_id: prev
-        required: false
-      - type: createPullRequestComment
-        body: 21-phases-activity.md
-        file: Readme.md
-        position: 1
-        data:
-          welcomeLink: "%actions.prev.data.html_url%"
-
-  # 90 appendix
-  - title: Organize your projects
-    description: Learn to organize into functions, targets, and phases
+        issue: '{{ store.structure_issue_id }}'
+  # 20 Dependency management
+      - type: createIssue
+        title: Why use a dependency manager?
+        body: 20-why-dependency-management.md
+        store:
+          why_dependency_management_issue_url: '{{ result.data.html_url }}'
+  - title: Why use a dependency manager?
+    description: Read and watch about the benefits of formal dependency management
+    link: '{{ store.why_dependency_management_issue_url }}'
     event: issues.closed
     actions:
+  # 30 Learn about scipiper remake files
+      - type: createIssue
+        title: The anatomy of a remakefile
+        body: 30-makefile-anatomy.md
+        store:
+          makefile_anatomy_url: '{{ result.data.html_url }}'
+  - title: The anatomy of a remakefile
+    description: Learn how to declare the relationships among files in an analysis
+    link: '{{ store.makefile_anatomy_url }}'
+    event: issues.closed
+    actions:
+  # 90 Appendix
+      - type: respond
+        with: xx-goto-next-issue.md
       - type: createIssue
         title: Where to learn more
         body: 90-references.md
