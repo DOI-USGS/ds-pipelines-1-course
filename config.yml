@@ -44,7 +44,7 @@ steps:
           structure_issue_id: '{{ payload.issue.number }}'
   - title: Directory structure and code decomposition
     description: Learn about team conventions for we organize pipeline files and code
-    link: '{{ store.structure_url }}'
+    link: '{{ store.structure_issue_url }}'
     event: issues.assigned
     actions:
       - type: respond
