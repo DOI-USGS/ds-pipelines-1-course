@@ -63,7 +63,7 @@ steps:
     event: issues.assigned
     actions:
       - type: respond
-        with: xx-goto-next-issue.md
+        with: 10a-folders-acvitity.md
         store:
           structure_activity_url: '{{ result.data.html_url }}'
   - title: Open a pull request for directory structure
