@@ -93,8 +93,8 @@ steps:
     event: issues.closed
     actions:
   # 90 Appendix
+      - type: respond
+        with: xx-goto-next-issue.md
       - type: createIssue
         title: Where to learn more
         body: 90-references.md
-  - title: Keep learning
-    description: Know where to look for refreshers or more details
