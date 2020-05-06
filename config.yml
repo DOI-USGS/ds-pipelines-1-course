@@ -39,6 +39,17 @@ steps:
         with: 01b-install-success.md
       - type: closeIssue
       - type: createIssue
+        title: Create a branch in your code repository
+        body: 02-create-branch.md
+        store:
+          branch_issue_url: '{{ result.data.html_url }}'
+  - title: Create a branch in your code repository
+    description: >-
+      create and checkout a new branch in your local repository; push the new branch to the remote host
+    link: '{{ store.branch_issue_url }}'
+    event: issues.closed
+    actions:
+      - type: createIssue
         title: Structure your code predictably
         body: 10-structure.md
         store:
