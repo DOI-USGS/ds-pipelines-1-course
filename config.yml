@@ -45,7 +45,7 @@ steps:
   - title: Directory structure and code decomposition
     description: Learn about team conventions for we organize pipeline files and code
     link: '{{ store.structure_issue_url }}'
-    event: issues.assigned
+    event: issues.labeled
     actions:
       - type: respond
         with: 11-structure-activity.md

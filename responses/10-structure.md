@@ -39,7 +39,7 @@ to move towards code that is more reproducible, more shareable, and understandab
 in a way where we can build on top of them as the projects progress. 
 
 
-Assign this issue to yourself and we'll get started on code and project structures
+Assign this issue to yourself and **add a label**, then we'll get started on code and project structures
 
 <hr>
-<h3 align="center">I'll sit patiently until you've assigned yourself to this one.</h3>
+<h3 align="center">I'll sit patiently until you've added a label to this one.</h3>
