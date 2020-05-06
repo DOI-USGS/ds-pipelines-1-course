@@ -20,3 +20,8 @@ Create a two phase directory structure for "fetch" and "process" concepts, and i
 Git challenge: commit an empty directory (out). Make them google this 
 
 When you are done, open a pull request with the changes.
+
+Congratulations, @{{ user.username }}, you've completed this issue and ready to move on!
+
+<hr>
+<h3 align="center">Return to the [Issues]({{ repoUrl }}/issues) page to see what's next.</h3>
