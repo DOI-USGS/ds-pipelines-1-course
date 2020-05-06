@@ -15,8 +15,44 @@ We recommend having a `src` and `out` folders within each phase that contain cod
 
 ### :keyboard: Activity: restructure your code repository to follow our team's best practices for folders and files
 
-Create a two phase directory structure for "fetch" and "process" concepts, and include `src` and `out` folders. Move your example script into the `src` folder and delete any existing folders that aren't part of the intended structure (modify .gitignore to skip data files and/or the whole out directory) 
+Create a two phase directory structure for "fetch" and "process" concepts, and include `src` and `out` folders. Move your example script into the `src` folder and delete any existing folders that aren't part of the intended structure [modify .gitignore to skip data files and/or the whole out directory] 
 
 Git challenge: commit an empty directory (out). Make them google this 
 
 When you are done, open a pull request with the changes. 
+
+_You can follow the manual steps below, or accept the suggestions in the following comments._
+
+1. Edit your [workflow file](fileUrl)
+1. Configure the `test` job to run only after the `build` job is completed (we'll use ellipses `...` to only show the parts of the workflow we're interested in, but you should not copy the ellipses directly):
+    ```yaml
+      test:
+        needs: build
+        runs-on: ubuntu-latest
+        ...
+    ```
+1. Add a step to your `test` job that uses the `download-artifacts` action.
+    ```yaml
+      test:
+        needs: build
+        runs-on: ubuntu-latest
+        ...
+        steps:
+        - uses: actions/checkout@v1
+        - uses: actions/download-artifact@master
+          with: 
+            name: webpack artifacts
+            path: public
+        - name: Use Node.js matrix.node-version
+          uses: actions/setup-node@v1
+          with:
+            node-version: matrix.node-version
+        - name: npm install, and test
+          run: |
+            npm install
+            npm test
+          env:
+            CI: true
+    ```
+    
+<hr><h3 align="center">I'll respond when I detect you've created a pull request.</h3>
