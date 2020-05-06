@@ -15,15 +15,14 @@ remotes::install_github('richfitz/remake')
 
 Next, install `scipiper`
 ```r
-remotes::install_github('usgs-r/scipiper')
+remotes::install_github('USGS-R/scipiper')
 ```
 
-when you are complete, comment with the message that appears after you run `library(scipiper)`
+Also install `drake`
+```r
+install.packages('drake')
+```
 
+When all three pipeline packages are installed, comment with the message that appears after you run `library(scipiper)`.
 
 <hr><h3 align="center">I'll respond when I detect you've commented to this issue.</h3>
-
-
-
-Close this issue when you're done and go back to the [Issues]({{ repoUrl }}/issues) page for the next topic.
-  
