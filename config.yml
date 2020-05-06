@@ -49,6 +49,8 @@ steps:
     link: '{{ store.branch_issue_url }}'
     event: issues.closed
     actions:
+      - type: respond
+        with: zz-goto-next-issue.md
       - type: createIssue
         title: Structure your code predictably
         body: 10-structure.md
@@ -79,7 +81,7 @@ steps:
     event: pull_request.closed
     actions:
       - type: respond
-        with: xx-goto-next-issue.md
+        with: zz-goto-next-issue.md
       - type: closeIssue
         issue: '{{ store.structure_issue_id }}'
       - type: createIssue
@@ -103,7 +105,7 @@ steps:
     event: issues.closed
     actions:
       - type: respond
-        with: xx-goto-next-issue.md
+        with: zz-goto-next-issue.md
       - type: createIssue
         title: Where to learn more
         body: 90-references.md

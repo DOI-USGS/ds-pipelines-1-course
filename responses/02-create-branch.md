@@ -1,8 +1,9 @@
 
 first things first you are going to need to clone this training repository to your local machine, so that you can make file changes and commits there. 
 
+Starting in the directory you work in for projects in R (for me, this is `Documents/R`), clone the repository and set your working directory to the new project folder that was created:
 ```
-git clone git@github.com:jread-usgs/ds-pipelines-1.git
+git clone git@github.com:{{ user.username }}/{{ repo }}.git
 cd ds-pipelines-1
 ```
 
