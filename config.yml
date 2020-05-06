@@ -48,7 +48,7 @@ steps:
     event: issues.assigned
     actions:
       - type: respond
-        with: 11-structure-activity.md
+        with: xx-goto-next-issue.md
         store:
           structure_activity_url: '{{ result.data.html_url }}'
   - title: Open a pull request for directory structure
