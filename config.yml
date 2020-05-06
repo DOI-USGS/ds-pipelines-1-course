@@ -58,9 +58,8 @@ steps:
     link: '{{ store.structure_activity_url }}'
     event: pull_request.opened
     actions:
-      - type: createReview
-        body: 12-function-activity.md
-        event: REQUEST_CHANGES
+      - type: respond
+        with: 12-function-activity.md
         store:
           function_activity_url: '{{ result.data.html_url }}'
   - title: Modify your pull request with code decomposition
