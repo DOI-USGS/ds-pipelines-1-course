@@ -75,6 +75,7 @@ steps:
         with: 12-function-activity.md
         store:
           function_activity_url: '{{ result.data.html_url }}'
+# look for "fixes #3" in the new commit message?
   - title: Modify your pull request with code decomposition
     description: Decompose code into functions
     link: '{{ store.structure_activity_url }}'
@@ -92,6 +93,14 @@ steps:
   - title: Why use a dependency manager?
     description: Read and watch about the benefits of formal dependency management
     link: '{{ store.why_dependency_management_issue_url }}'
+    event: issue_comment.created
+    actions:
+      - type: respond
+        with: 20a-watch-drake.md
+# does this really need a new step, or can it be combined with the above as a second response trigger?
+  - title: Why use a dependency manager specifically for R?
+    description: Read and watch about the benefits of formal dependency management
+    link: '{{ store.why_dependency_management_issue_url }}'
     event: issues.closed
     actions:
       - type: createIssue
@@ -99,6 +108,7 @@ steps:
         body: 30-makefile-anatomy.md
         store:
           makefile_anatomy_url: '{{ result.data.html_url }}'
+
   - title: The anatomy of a remakefile
     description: Learn how to declare the relationships among files in an analysis
     link: '{{ store.makefile_anatomy_url }}'
