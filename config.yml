@@ -83,6 +83,7 @@ steps:
     actions:
       - type: respond
         with: zz-goto-next-issue.md
+# this doesn't seem to be closing the issue...?
       - type: closeIssue
         issue: '{{ store.structure_issue_id }}'
       - type: createIssue
