@@ -11,4 +11,10 @@ We strive to create functions that declare their clear purpose (good naming and 
 
 We’ve given you an example script in the my_work_R folder that loads data and generates one plot, two comma-delimited tables, and a diagnostic log file. This script isn’t very good and includes some bad practices that need to be cleaned up. But this script should run for you without any changes. Additionally, we’re asking that you split this single script into several functions that can be used to build the same four things. When you are happy with your changes, delete the example script (and the my_work_R folder) and commit your new script(s) into git source control. Use your same folder structure that was created for your open PR, but feel free to add a "3_visualize" phase. Push your commit(s) to the open pull request and assign `aappling-usgs` for review. 
 
+Since you are turning the script into functions, let us know via a comment how to run your code. For example:
+```r
+data <- fetch_data()
+plot_results(data)
+```
+
 <hr><h3 align="center">A real live human will interact with your pull request when you've added them as a reviewer.</h3>

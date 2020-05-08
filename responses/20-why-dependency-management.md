@@ -2,6 +2,10 @@ Why dependency management: Idea of smart rebuilds
 
 more here....
 
-### :keyboard: Activity: watch video on drake from 0:00 to 5:24 (or some timestamp??) 
+[![reproducible workflows with make](https://user-images.githubusercontent.com/2349007/81425070-81bd4c80-911c-11ea-87ea-f044df9c1c4d.png)](https://www.youtube.com/watch?v=u-ZgiYjJ4lA "Karl Broman, reproducible workflows with make")
 
-Use a github comment on this issue to let us know what you thought was interesting about these pipeline concepts using no more than 300 words. Then assign your onboarding cohort team member this issue to read what you wrote. When they are done, they can close the issue.  
+
+
+### :keyboard: Activity: watch video on make and reproducible workflows
+
+Use a github comment on this issue to let us know what you thought was interesting about these pipeline concepts using no more than 300 words.
