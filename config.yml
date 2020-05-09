@@ -85,7 +85,6 @@ steps:
     actions:
       - type: respond
         with: zz-goto-next-issue.md
-# ****this doesn't seem to be closing the issue...?
       - type: closeIssue
         issue: '{{ store.structure_issue_id }}'
       - type: createIssue
@@ -112,6 +111,7 @@ steps:
         body: 30-makefile-anatomy.md
         store:
           makefile_anatomy_url: '{{ result.data.html_url }}'
+          makefile_issue_id: '{{ result.data.number }}'
   - title: The anatomy of a remakefile
     description: Learn how to declare the relationships among files in an analysis
     link: '{{ store.makefile_anatomy_url }}'
@@ -131,6 +131,8 @@ steps:
     actions:
       - type: respond
         with: zz-goto-next-issue.md
+      - type: closeIssue
+        issue: '{{ store.makefile_issue_id }}'
       - type: createIssue
         title: Where to learn more
         body: 90-references.md
