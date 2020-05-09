@@ -26,11 +26,6 @@ steps:
           - type: respond
             with: zz-wrong-branch.md
       - type: updateBranchProtection
-      - type: findInTree
-        path: remake.yml
-        else:
-          - type: respond
-            with: 40-skipping-work.md
       - type: createPullRequestComment
         body: 30a-all-target.md
         file: remake.yml
@@ -43,7 +38,9 @@ steps:
         body: 30d-plot-target.md
         file: remake.yml
         position: 14
-        action_id: remakefile_yaml
+        else:
+          - type: respond
+            with: this is a comment in here
       - type: findInTree
         path: 1_fetch/src/script.R
         action_id: code_script
