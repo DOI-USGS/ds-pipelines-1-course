@@ -8,7 +8,7 @@ A `remakefile` uses the [yaml file format](https://en.wikipedia.org/wiki/YAML). 
 
 In addition to phases (which we covered in #{{ store.structure_issue_id }} *FOR DIAGNOSTICS* this is the branching issue: #{{ store.branch_issue_id }}), it is important to decompose high-level concepts (or existing scripts) into thoughtful functions and "targets" that form the building blocks of data processing pipelines. A target is a noun we use to describe a tangible output of function, which is often a file or an R object. Targets can be used as an end-product (like a summary map) or as input _into_ another function to create _another_ target. 
 
-<hr>
+---
 The simplest version of a `remakefile` (adapted from the [remake repo](https://github.com/richfitz/remake)) might look something like this:
 
 ```yaml
@@ -38,7 +38,8 @@ Even though this is a simple example, there is some new syntax that may be confu
  - `depends` is a field that explicity specifies a _dependency_ of a target. So when that dependency is considered "out of date" (more on that later), the target that lists that dependency in `depends` is also going to be "out of date". In this way, the "all" target isn't complete and up-to-date until `figure_1.png` is
  - `all` is a special target that groups other targets. Again, we'll cover group targets - like `all` - more later on.
 
-<hr>
+---
+
 So, what does this do for you? Well, if you had this `remake.yml` file in your current working directory, and the `download_data()`, `process_data()`, and `myplot()` functions were in `code.R` (which you don't), it would look like this when you run `make` from the `remake` package
 
 ![remake run image](https://user-images.githubusercontent.com/2349007/81447341-15edda80-9142-11ea-8321-c490cb6cb9ef.png)
@@ -54,7 +55,8 @@ git branch -d structure
 git checkout -b remakefile
 git push -u origin remakefile 
 ```
-<hr>
+
+---
 Now, building on your existing folders, functions, and code from the previous sections, write a remake file that builds _your_ `figure_1.png` with `remake::make()` and create a [pull request]({{ repoUrl }}/pulls) with your changes. Comment in the pull request with a screenshot of the build message, like we have in the message above :point_up:
 
 
