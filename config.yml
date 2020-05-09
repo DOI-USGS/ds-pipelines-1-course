@@ -25,6 +25,7 @@ steps:
         else:
           - type: respond
             with: zz-wrong-branch.md
+      - type: updateBranchProtection
       - type: createPullRequestComment
         body: 30a-all-target.md
         file: remake.yml
@@ -37,6 +38,12 @@ steps:
         body: 30d-plot-target.md
         file: remake.yml
         position: 14
+      - type: findInTree
+        path: remake.yml
+        action_id: remakefile_yaml
+      - type: findInTree
+        path: 1_fetch/src/script.R
+        action_id: code_script
       - type: createReview
         body: fix-filename.md
         event: REQUEST_CHANGES
