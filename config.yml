@@ -34,7 +34,9 @@ steps:
         right: "path:remake.yml"
         else:
           - type: respond
-            with: zz-wrong-branch.md
+            with: zz-missing-file.md
+            data:
+              - file: remake.yml
       - type: createPullRequestComment
         body: 30a-all-target.md
         file: remake.yml
