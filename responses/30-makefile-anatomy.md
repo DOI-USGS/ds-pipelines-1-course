@@ -72,23 +72,11 @@ targets:
   figure_1.png:
     command: myplot(target_name, processed)
 ```    
+
 then use `Ctrl+D` to exit the file creation mode and return to the prompt. 
+
 ---
 Finally, create a [pull request]({{ repoUrl }}/pulls) that includes this new file (should be called `remake.yml`)
-
-
---- 
-# THIS STUFF IS FOR LATER
-So, what does this do for you? Well, if you had this `remake.yml` file in your current working directory, and the `download_data()`, `process_data()`, and `myplot()` functions were in `code.R` (which you don't), it would look like this when you run `make` from the `remake` package
-
-![remake run image](https://user-images.githubusercontent.com/2349007/81447341-15edda80-9142-11ea-8321-c490cb6cb9ef.png)
-
-
----
-Now, building on your existing folders, functions, and code from the previous sections, write a remake file that builds _your_ `figure_1.png` with `remake::make()` and create a [pull request]({{ repoUrl }}/pulls) with your changes. Comment in the pull request with a screenshot of the build message, like we have in the message above :point_up:
-
-
-Oh neat, some formatting? You'll see that the real power of dependency management comes later...when we make mistakes or changes. 
 
 
 

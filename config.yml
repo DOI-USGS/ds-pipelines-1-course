@@ -139,6 +139,19 @@ steps:
 # look for "fixes #6" in the new commit message?
 # look for a PR title that isn't the default? (default will be "remakefile")
       - type: respond
+        with: 31-add-remake-code.md
+      - type: gate
+        left: '%actions.tree.data.tree%'
+        operator: includes
+# can this be a wildcard so we don't restrict to the exact filename?
+        right: path:/1_fetch/src/download.R/
+        else:
+        - type: createReview
+          body: fix-filename.md
+          event: REQUEST_CHANGES
+      - type: respond
+        with: 32-asking-code-changes.md
+      - type: respond
         with: 40-skipping-work.md
         store:
           skip_activity_url: '{{ result.data.html_url }}'
