@@ -6,7 +6,7 @@ A `remakefile` uses the [yaml file format](https://en.wikipedia.org/wiki/YAML). 
 
 #### using remakefiles in data science pipeline
 
-In addition to phases (which we covered in #{{ store.structure_issue_id }} *FOR DIAGNOSTICS* this is the branching issue: # {{ store.branch_issue_id }}), it is important to decompose high-level concepts (or existing scripts) into thoughtful functions and "targets" that form the building blocks of data processing pipelines. A target is a noun we use to describe a tangible output of function, which is often a file or an R object. Targets can be used as an end-product (like a summary map) or as input _into_ another function to create _another_ target. 
+In addition to phases (which we covered in #{{ store.structure_issue_id }} *FOR DIAGNOSTICS* this is the branching issue: #{{ store.branch_issue_id }}), it is important to decompose high-level concepts (or existing scripts) into thoughtful functions and "targets" that form the building blocks of data processing pipelines. A target is a noun we use to describe a tangible output of function, which is often a file or an R object. Targets can be used as an end-product (like a summary map) or as input _into_ another function to create _another_ target. 
 
 <hr>
 The simplest version of a `remakefile` (adapted from the [remake repo](https://github.com/richfitz/remake)) might look something like this:
