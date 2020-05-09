@@ -43,6 +43,7 @@ steps:
         body: 02-create-branch.md
         store:
           branch_issue_url: '{{ result.data.html_url }}'
+          branch_issue_id: '{{ payload.issue.number }}'
   - title: Create a branch in your code repository
     description: >-
       create and checkout a new branch in your local repository; push the new branch to the remote host
@@ -70,12 +71,13 @@ steps:
     description: Begin to organize code files according our team conventions
     link: '{{ store.structure_activity_url }}'
     event: pull_request.opened
+# look for "fixes #3" in the new commit message?
+# look for a PR title that isn't the default? (default will be "structure")
     actions:
       - type: respond
         with: 12-function-activity.md
         store:
           function_activity_url: '{{ result.data.html_url }}'
-# look for "fixes #3" in the new commit message?
   - title: Modify your pull request with code decomposition
     description: Decompose code into functions
     link: '{{ store.structure_activity_url }}'
@@ -83,7 +85,7 @@ steps:
     actions:
       - type: respond
         with: zz-goto-next-issue.md
-# this doesn't seem to be closing the issue...?
+# ****this doesn't seem to be closing the issue...?
       - type: closeIssue
         issue: '{{ store.structure_issue_id }}'
       - type: createIssue
@@ -98,22 +100,34 @@ steps:
     actions:
       - type: respond
         with: 20a-watch-drake.md
-# does this really need a new step, or can it be combined with the above as a second response trigger?
   - title: Why use a dependency manager specifically for R?
     description: Read and watch about the benefits of formal dependency management
     link: '{{ store.why_dependency_management_issue_url }}'
     event: issues.closed
     actions:
+      - type: respond
+        with: zz-goto-next-issue.md
       - type: createIssue
         title: The anatomy of a remakefile
         body: 30-makefile-anatomy.md
         store:
           makefile_anatomy_url: '{{ result.data.html_url }}'
-
   - title: The anatomy of a remakefile
     description: Learn how to declare the relationships among files in an analysis
     link: '{{ store.makefile_anatomy_url }}'
-    event: issues.closed
+    event: pull_request.opened
+# look for "fixes #6" in the new commit message?
+# look for a PR title that isn't the default? (default will be "remakefile")
+    actions:
+      - type: respond
+        with: 40-skipping-work.md
+        store:
+          skip_activity_url: '{{ result.data.html_url }}'
+  - title: Depends in action
+    description: >-
+      Seeing "skip the work you don’t need" in action
+    link: '{{ store.skip_activity_url }}'
+    event: pull_request.closed
     actions:
       - type: respond
         with: zz-goto-next-issue.md
