@@ -46,9 +46,6 @@ steps:
         body: 30d-plot-target.md
         file: remake.yml
         position: 14
-        else:
-          - type: respond
-            with: this is a comment in here
       - type: findInTree
         path: 1_fetch/src/script.R
         action_id: code_script
