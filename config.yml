@@ -25,14 +25,13 @@ steps:
         else:
           - type: respond
             with: zz-wrong-branch.md
-      - type: updateBranchProtection
       - type: getTree
         action_id: tree
         recursive: true
+        sha: "%payload.pull_request.head.sha%"
       - type: gate
         left: '%actions.tree.data.tree%'
         operator: includes
-# can this be a wildcard so we don't restrict to the exact filename?
         right: "path:remake.yml"
         else:
           - type: respond
