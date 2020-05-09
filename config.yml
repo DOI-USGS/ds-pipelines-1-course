@@ -33,7 +33,7 @@ steps:
         right: "path:remake.yml"
         else:
           - type: respond
-          - with: fix-filename.md
+            with: fix-filename.md
       - type: createPullRequestComment
         body: 30a-all-target.md
         file: remake.yml
