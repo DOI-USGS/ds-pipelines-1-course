@@ -43,7 +43,7 @@ steps:
         body: 02-create-branch.md
         store:
           branch_issue_url: '{{ result.data.html_url }}'
-          branch_issue_id: '{{ payload.issue.number }}'
+          branch_issue_id: '{{ result.data.number }}'
   - title: Create a branch in your code repository
     description: >-
       create and checkout a new branch in your local repository; push the new branch to the remote host
@@ -57,7 +57,7 @@ steps:
         body: 10-structure.md
         store:
           structure_issue_url: '{{ result.data.html_url }}'
-          structure_issue_id: '{{ payload.issue.number }}'
+          structure_issue_id: '{{ result.data.number }}'
   - title: Directory structure and code decomposition
     description: Learn about team conventions for we organize pipeline files and code
     link: '{{ store.structure_issue_url }}'
