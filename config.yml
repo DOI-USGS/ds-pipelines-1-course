@@ -116,6 +116,7 @@ steps:
     description: Learn how to declare the relationships among files in an analysis
     link: '{{ store.makefile_anatomy_url }}'
     event: pull_request.opened
+    actions:
       - type: gate
         left: "%payload.pull_request.head.ref%"
         operator: ===
