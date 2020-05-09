@@ -26,6 +26,9 @@ steps:
           - type: respond
             with: zz-wrong-branch.md
       - type: updateBranchProtection
+      - type: getTree
+        action_id: tree
+        recursive: true
       - type: gate
         left: '%actions.tree.data.tree%'
         operator: includes
