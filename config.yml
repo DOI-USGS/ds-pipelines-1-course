@@ -26,6 +26,14 @@ steps:
           - type: respond
             with: zz-wrong-branch.md
       - type: updateBranchProtection
+      - type: gate
+        left: '%actions.tree.data.tree%'
+        operator: includes
+# can this be a wildcard so we don't restrict to the exact filename?
+        right: path:/remake.yml
+        else:
+          - type: respond
+          - with: fix-filename.md
       - type: createPullRequestComment
         body: 30a-all-target.md
         file: remake.yml
@@ -51,14 +59,6 @@ steps:
 # look for a PR title that isn't the default? (default will be "remakefile")
       - type: respond
         with: 31-add-remake-code.md
-      - type: gate
-        left: '%actions.tree.data.tree%'
-        operator: includes
-# can this be a wildcard so we don't restrict to the exact filename?
-        right: path:/1_fetch/src/download.R/
-        else:
-          - type: respond
-          - with: fix-filename.md
       - type: respond
         with: 32-asking-code-changes.md
       - type: respond
