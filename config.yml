@@ -12,6 +12,54 @@ before:
     store:
       overview_issue_url: '{{ result.data.html_url }}'
 steps:
+
+  - title: The anatomy of a remakefile
+    description: Learn how to declare the relationships among files in an analysis
+    link: '{{ store.makefile_anatomy_url }}'
+    event: pull_request.opened
+    actions:
+      - type: gate
+        left: "%payload.pull_request.head.ref%"
+        operator: ===
+        right: remakefile
+        else:
+          - type: respond
+            with: zz-wrong-branch.md
+      - type: createPullRequestComment
+        body: 30a-all-target.md
+        file: remake.yml
+        position: 6
+      - type: createPullRequestComment
+        body: 30b-download-target.md
+        file: remake.yml
+        position: 9
+      - type: createPullRequestComment
+        body: 30d-plot-target.md
+        file: remake.yml
+        position: 14
+      - type: createReview
+        body: fix-filename.md
+        event: REQUEST_CHANGES
+# look for "fixes #6" in the new commit message?
+# look for a PR title that isn't the default? (default will be "remakefile")
+      - type: respond
+        with: 31-add-remake-code.md
+      - type: gate
+        left: '%actions.tree.data.tree%'
+        operator: includes
+# can this be a wildcard so we don't restrict to the exact filename?
+        right: path:/1_fetch/src/download.R/
+        else:
+          - type: respond
+          - with: fix-filename.md
+      - type: respond
+        with: 32-asking-code-changes.md
+      - type: respond
+        with: 40-skipping-work.md
+        store:
+          skip_activity_url: '{{ result.data.html_url }}'
+
+
   - title: Get the big picture
     description: Learn about our goals and general approaches for data analysis pipelines
     link: '{{ store.overview_issue_url }}'
@@ -81,6 +129,7 @@ steps:
   - title: Modify your pull request with code decomposition
     description: Decompose code into functions
     link: '{{ store.structure_activity_url }}'
+# make sure it merges not just closes?
     event: pull_request.closed
     actions:
       - type: respond
@@ -112,49 +161,7 @@ steps:
         store:
           makefile_anatomy_url: '{{ result.data.html_url }}'
           makefile_issue_id: '{{ result.data.number }}'
-  - title: The anatomy of a remakefile
-    description: Learn how to declare the relationships among files in an analysis
-    link: '{{ store.makefile_anatomy_url }}'
-    event: pull_request.opened
-    actions:
-      - type: gate
-        left: "%payload.pull_request.head.ref%"
-        operator: ===
-        right: remakefile
-        else:
-          - type: respond
-            with: zz-wrong-branch.md
-      - type: createPullRequestComment
-        body: 30a-all-target.md
-        file: remake.yml
-        position: 6
-      - type: createPullRequestComment
-        body: 30b-download-target.md
-        file: remake.yml
-        position: 9
-      - type: createPullRequestComment
-        body: 30d-plot-target.md
-        file: remake.yml
-        position: 14
-# look for "fixes #6" in the new commit message?
-# look for a PR title that isn't the default? (default will be "remakefile")
-      - type: respond
-        with: 31-add-remake-code.md
-      - type: gate
-        left: '%actions.tree.data.tree%'
-        operator: includes
-# can this be a wildcard so we don't restrict to the exact filename?
-        right: path:/1_fetch/src/download.R/
-        else:
-        - type: createReview
-          body: fix-filename.md
-          event: REQUEST_CHANGES
-      - type: respond
-        with: 32-asking-code-changes.md
-      - type: respond
-        with: 40-skipping-work.md
-        store:
-          skip_activity_url: '{{ result.data.html_url }}'
+
   - title: Depends in action
     description: >-
       Seeing "skip the work you don’t need" in action
