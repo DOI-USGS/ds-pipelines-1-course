@@ -40,13 +40,10 @@ Even though this is a simple example, there is some new syntax that may be confu
 
 ---
 
-So, what does this do for you? Well, if you had this `remake.yml` file in your current working directory, and the `download_data()`, `process_data()`, and `myplot()` functions were in `code.R` (which you don't), it would look like this when you run `make` from the `remake` package
-
-![remake run image](https://user-images.githubusercontent.com/2349007/81447341-15edda80-9142-11ea-8321-c490cb6cb9ef.png)
-
-Oh neat, some formatting? You'll see that the real power of dependency management comes later...when we make mistakes or changes. 
+We're going to start with this simple example, and modify it to match our pipeline structure. This will start by creating a new branch, creating a new file, adding that file to git tracking, and opening a new pull request that includes the file:
 
 ### :keyboard: Activity: get your code plugged into a remake file
+
 First things first, we're going to want a new branch. You can delete your previous one, since that pull request was merged. 
 ```
 git checkout master
@@ -55,8 +52,44 @@ git branch -d structure
 git checkout -b remakefile
 git push -u origin remakefile 
 ```
+---
+Next, create the file with the contents we've given you by entering the following from your repo directory in terminal/command line:
+```
+cat > remake.yml
+sources:
+  - code.R
+
+targets:
+  all:
+    depends: figure_1.png
+
+  model_RMSEs.csv:
+    command: download_data(target_name)
+
+  processed:
+    command: process_data("model_RMSEs.csv")
+
+  figure_1.png:
+    command: myplot(target_name, processed)
+```    
+then use `Ctrl+D` to exit the file creation mode and return to the prompt. 
+---
+Finally, create a [pull request]({{ repoUrl }}/pulls) that includes this new file (should be called `remake.yml`)
+
+
+--- 
+# THIS STUFF IS FOR LATER
+So, what does this do for you? Well, if you had this `remake.yml` file in your current working directory, and the `download_data()`, `process_data()`, and `myplot()` functions were in `code.R` (which you don't), it would look like this when you run `make` from the `remake` package
+
+![remake run image](https://user-images.githubusercontent.com/2349007/81447341-15edda80-9142-11ea-8321-c490cb6cb9ef.png)
+
 
 ---
 Now, building on your existing folders, functions, and code from the previous sections, write a remake file that builds _your_ `figure_1.png` with `remake::make()` and create a [pull request]({{ repoUrl }}/pulls) with your changes. Comment in the pull request with a screenshot of the build message, like we have in the message above :point_up:
+
+
+Oh neat, some formatting? You'll see that the real power of dependency management comes later...when we make mistakes or changes. 
+
+
 
 
