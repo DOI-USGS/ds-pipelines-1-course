@@ -38,6 +38,9 @@ steps:
             with: zz-missing-file.md
             data:
               file_name: 'remake.yml'
+        required: false
+      - type: respond
+        with: 31-add-remake-code.md
 
   - title: Completing the plumbing of your remakefile
     description: Build the relationships among files in an analysis
@@ -90,8 +93,6 @@ steps:
             with: zz-missing-file.md
             data:
               file_name: '2_process/src/{your_script_name}.R'
-      - type: respond
-        with: 31-add-remake-code.md
       - type: respond
         with: 32-asking-code-changes.md
       - type: respond
