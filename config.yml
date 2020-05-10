@@ -140,10 +140,21 @@ steps:
             data:
               file_name: 'remake.yml'
         required: false
+# these `createPullRequestComment`s will silently fail if the file doesn't exist, so no big deal
+      - type: createPullRequestComment
+        body: 30a-all-target.md
+        file: remake.yml
+        position: 6
+      - type: createPullRequestComment
+        body: 30b-download-target.md
+        file: remake.yml
+        position: 9
+      - type: createPullRequestComment
+        body: 30d-plot-target.md
+        file: remake.yml
+        position: 14
       - type: respond
         with: 31-add-remake-code.md
-
-# we're waiting on a comment from above, which we'd use to kick off 32-asking-code-changes.md
 
   - title: Depends in action
     description: >-
@@ -156,8 +167,9 @@ steps:
       - type: closeIssue
         issue: '{{ store.makefile_issue_id }}'
       - type: createIssue
-        title: Where to learn more
-        body: 90-references.md
+        title: >-
+          What's next
+        body: 40-whats-next.md
 
 #  - title: Completing the plumbing of your remakefile
 #    description: Build the relationships among files in an analysis
@@ -174,18 +186,6 @@ steps:
 #            with: zz-missing-file.md
 #            data:
 #              file_name: 'remake.yml'
-#      - type: createPullRequestComment
-#        body: 30a-all-target.md
-#        file: remake.yml
-#        position: 6
-#      - type: createPullRequestComment
-#        body: 30b-download-target.md
-#        file: remake.yml
-#        position: 9
-#      - type: createPullRequestComment
-#        body: 30d-plot-target.md
-#        file: remake.yml
-#        position: 14
 #      - type: getTree
 #        action_id: tree
 #        recursive: true
