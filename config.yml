@@ -42,6 +42,7 @@ steps:
     description: Build the relationships among files in an analysis
     link: '{{ ####?store.makefile_anatomy_url }}'
     event: pull_request.synchronize
+    actions:
       - type: gate
         left: '%actions.tree.data.tree%'
         operator: includes
