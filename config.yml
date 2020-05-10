@@ -67,7 +67,7 @@ steps:
       - type: gate
         left: '%actions.tree.data.tree%'
         operator: includes
-        right: "path:1_fetch/src/*\.(R|r)$"
+        right: "path:/1_fetch\/src/.*\.R/i"
         else:
           - type: respond
             with: zz-missing-file.md
@@ -76,7 +76,7 @@ steps:
       - type: gate
         left: '%actions.tree.data.tree%'
         operator: includes
-        right: "path:2_process/src/*\.(R|r)$"
+        right: "path:/2_process\/src/.*\.R/i"
         else:
           - type: respond
             with: zz-missing-file.md
