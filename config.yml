@@ -12,95 +12,6 @@ before:
     store:
       overview_issue_url: '{{ result.data.html_url }}'
 steps:
-
-  - title: The anatomy of a remakefile
-    description: Learn how to declare the relationships among files in an analysis
-    link: '{{ store.makefile_anatomy_url }}'
-    event: pull_request.opened
-    actions:
-      - type: gate
-        left: "%payload.pull_request.head.ref%"
-        operator: ===
-        right: remakefile
-        else:
-          - type: respond
-            with: zz-wrong-branch.md
-      - type: getTree
-        action_id: tree
-        recursive: true
-        sha: "%payload.pull_request.head.sha%"
-      - type: gate
-        left: '%actions.tree.data.tree%'
-        operator: includes
-        right: "path:remake.yml"
-        else:
-          - type: respond
-            with: zz-missing-file.md
-            data:
-              file_name: 'remake.yml'
-        required: false
-      - type: respond
-        with: 31-add-remake-code.md
-
-  - title: Completing the plumbing of your remakefile
-    description: Build the relationships among files in an analysis
-    # UPDATE THIS LINK!!
-    link: '{{ store.makefile_anatomy_url }}'
-    event: pull_request.synchronize
-    actions:
-      - type: gate
-        left: '%actions.tree.data.tree%'
-        operator: includes
-        right: "path:remake.yml"
-        else:
-          - type: respond
-            with: zz-missing-file.md
-            data:
-              file_name: 'remake.yml'
-      - type: createPullRequestComment
-        body: 30a-all-target.md
-        file: remake.yml
-        position: 6
-      - type: createPullRequestComment
-        body: 30b-download-target.md
-        file: remake.yml
-        position: 9
-      - type: createPullRequestComment
-        body: 30d-plot-target.md
-        file: remake.yml
-        position: 14
-      - type: getTree
-        action_id: tree
-        recursive: true
-        sha: "%payload.pull_request.head.sha%"
-      - type: gate
-        left: '%actions.tree.data.tree%'
-        operator: includes
-        right: >-
-          "path:/1_fetch\/src/.*\.R/i"
-        else:
-          - type: respond
-            with: zz-missing-file.md
-            data:
-              file_name: '1_fetch/src/{your_script_name}.R'
-      - type: gate
-        left: '%actions.tree.data.tree%'
-        operator: includes
-        right: >-
-          "path:/2_process\/src/.*\.R/i"
-        else:
-          - type: respond
-            with: zz-missing-file.md
-            data:
-              file_name: '2_process/src/{your_script_name}.R'
-      - type: respond
-        with: 32-asking-code-changes.md
-      - type: respond
-        with: 40-skipping-work.md
-        store:
-          skip_activity_url: '{{ result.data.html_url }}'
-
-
   - title: Get the big picture
     description: Learn about our goals and general approaches for data analysis pipelines
     link: '{{ store.overview_issue_url }}'
@@ -203,6 +114,37 @@ steps:
           makefile_anatomy_url: '{{ result.data.html_url }}'
           makefile_issue_id: '{{ result.data.number }}'
 
+  - title: The anatomy of a remakefile
+    description: Learn how to declare the relationships among files in an analysis
+    link: '{{ store.makefile_anatomy_url }}'
+    event: pull_request.opened
+    actions:
+      - type: gate
+        left: "%payload.pull_request.head.ref%"
+        operator: ===
+        right: remakefile
+        else:
+          - type: respond
+            with: zz-wrong-branch.md
+      - type: getTree
+        action_id: tree
+        recursive: true
+        sha: "%payload.pull_request.head.sha%"
+      - type: gate
+        left: '%actions.tree.data.tree%'
+        operator: includes
+        right: "path:remake.yml"
+        else:
+          - type: respond
+            with: zz-missing-file.md
+            data:
+              file_name: 'remake.yml'
+        required: false
+      - type: respond
+        with: 31-add-remake-code.md
+
+# we're waiting on a comment from above, which we'd use to kick off 32-asking-code-changes.md
+
   - title: Depends in action
     description: >-
       Seeing "skip the work you don’t need" in action
@@ -216,3 +158,61 @@ steps:
       - type: createIssue
         title: Where to learn more
         body: 90-references.md
+
+#  - title: Completing the plumbing of your remakefile
+#    description: Build the relationships among files in an analysis
+#    # UPDATE THIS LINK!!
+#    link: '{{ store.makefile_anatomy_url }}'
+#    event: pull_request.synchronize
+#    actions:
+#      - type: gate
+#        left: '%actions.tree.data.tree%'
+#        operator: includes
+#        right: "path:remake.yml"
+#        else:
+#          - type: respond
+#            with: zz-missing-file.md
+#            data:
+#              file_name: 'remake.yml'
+#      - type: createPullRequestComment
+#        body: 30a-all-target.md
+#        file: remake.yml
+#        position: 6
+#      - type: createPullRequestComment
+#        body: 30b-download-target.md
+#        file: remake.yml
+#        position: 9
+#      - type: createPullRequestComment
+#        body: 30d-plot-target.md
+#        file: remake.yml
+#        position: 14
+#      - type: getTree
+#        action_id: tree
+#        recursive: true
+#        sha: "%payload.pull_request.head.sha%"
+#      - type: gate
+#        left: '%actions.tree.data.tree%'
+#        operator: includes
+#        right: >-
+#          "path:/1_fetch\/src/.*\.R/i"
+#        else:
+#          - type: respond
+#            with: zz-missing-file.md
+#            data:
+#              file_name: '1_fetch/src/{your_script_name}.R'
+#      - type: gate
+#        left: '%actions.tree.data.tree%'
+#        operator: includes
+#        right: >-
+#          "path:/2_process\/src/.*\.R/i"
+#        else:
+#          - type: respond
+#            with: zz-missing-file.md
+#            data:
+#              file_name: '2_process/src/{your_script_name}.R'
+#      - type: respond
+#        with: 32-asking-code-changes.md
+#      - type: respond
+#        with: 40-skipping-work.md
+#        store:
+#          skip_activity_url: '{{ result.data.html_url }}'
