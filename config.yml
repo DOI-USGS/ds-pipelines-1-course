@@ -40,7 +40,8 @@ steps:
 
   - title: Completing the plumbing of your remakefile
     description: Build the relationships among files in an analysis
-    link: '{{ ####?store.makefile_anatomy_url }}'
+    # UPDATE THIS LINK!!
+    link: '{{ store.makefile_anatomy_url }}'
     event: pull_request.synchronize
     actions:
       - type: gate
