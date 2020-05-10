@@ -36,7 +36,7 @@ steps:
           - type: respond
             with: zz-missing-file.md
             data:
-              - file: remake.yml
+              - file_name: 'remake.yml'
       - type: createPullRequestComment
         body: 30a-all-target.md
         file: remake.yml

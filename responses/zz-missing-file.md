@@ -1,1 +1,1 @@
-Whoops! looks like you missed {{ file }}
+Whoops! looks like you missed {{ file_name }}
