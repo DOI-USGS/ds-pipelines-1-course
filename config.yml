@@ -37,6 +37,20 @@ steps:
             with: zz-missing-file.md
             data:
               file_name: 'remake.yml'
+
+  - title: Completing the plumbing of your remakefile
+    description: Build the relationships among files in an analysis
+    link: '{{ ####?store.makefile_anatomy_url }}'
+    event: pull_request.synchronize
+      - type: gate
+        left: '%actions.tree.data.tree%'
+        operator: includes
+        right: "path:remake.yml"
+        else:
+          - type: respond
+            with: zz-missing-file.md
+            data:
+              file_name: 'remake.yml'
       - type: createPullRequestComment
         body: 30a-all-target.md
         file: remake.yml
@@ -49,14 +63,24 @@ steps:
         body: 30d-plot-target.md
         file: remake.yml
         position: 14
-      - type: findInTree
-        path: 1_fetch/src/script.R
-        action_id: code_script
-      - type: createReview
-        body: fix-filename.md
-        event: REQUEST_CHANGES
-# look for "fixes #6" in the new commit message?
-# look for a PR title that isn't the default? (default will be "remakefile")
+      - type: gate
+        left: '%actions.tree.data.tree%'
+        operator: includes
+        right: "path:1_fetch/src/*\.(R|r)$"
+        else:
+          - type: respond
+            with: zz-missing-file.md
+            data:
+              file_name: '1_fetch/src/{your_script_name}.R'
+      - type: gate
+        left: '%actions.tree.data.tree%'
+        operator: includes
+        right: "path:2_process/src/*\.(R|r)$"
+        else:
+          - type: respond
+            with: zz-missing-file.md
+            data:
+              file_name: '2_process/src/{your_script_name}.R'
       - type: respond
         with: 31-add-remake-code.md
       - type: respond
