@@ -28,6 +28,7 @@ steps:
       - type: getTree
         action_id: tree
         recursive: true
+        sha: "%payload.pull_request.head.sha%"
       - type: gate
         left: '%actions.tree.data.tree%'
         operator: includes
@@ -65,6 +66,10 @@ steps:
         body: 30d-plot-target.md
         file: remake.yml
         position: 14
+      - type: getTree
+        action_id: tree
+        recursive: true
+        sha: "%payload.pull_request.head.sha%"
       - type: gate
         left: '%actions.tree.data.tree%'
         operator: includes
