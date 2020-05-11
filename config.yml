@@ -150,6 +150,10 @@ steps:
         file: remake.yml
         position: 9
       - type: createPullRequestComment
+        body: 30c-process-target.md
+        file: remake.yml
+        position: 12
+      - type: createPullRequestComment
         body: 30d-plot-target.md
         file: remake.yml
         position: 14
