@@ -11,4 +11,4 @@ We'd like you to next check out a short part of Will's video on `drake`
 
 Use a github comment on this issue to let us know what contrasts you identified between solutions in `make` and what is offered in R-specific tools, like `drake`. Please use less than 300 words. Then assign your onboarding cohort team member this issue to read what you wrote. When they are done, welcome them to comment with any questions or comments.   
 
-<hr><h3 align="center">When you are satisfied with the discussion, you can close the issue</h3>
+<hr><h3 align="center">When you are satisfied with the discussion, you can close this issue and I'll direct you to the next one.</h3>
