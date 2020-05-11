@@ -53,7 +53,7 @@ steps:
       - type: respond
         with: zz-goto-next-issue.md
       - type: createIssue
-        title: Structure your code predictably
+        title: Organize your project files
         body: 10-structure.md
         store:
           structure_issue_url: '{{ result.data.html_url }}'
