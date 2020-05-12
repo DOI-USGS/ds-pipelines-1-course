@@ -19,9 +19,9 @@ Which means everthing is up to date so all targets are :OK:
 --- 
 
 Lastly, imagine the following comment appeared on your pull request. 
-> Oh shoot @{{ user.username }}, I am using your results for **FANCY BIG PROJECT** and I have coded everything to assume your outputs use the convention "PB", "DL", and "PGDL" (instead of lowercase). Can you update your code accordingly? 
+> Oh shoot @{{ user.username }}, I am using your results for **FANCY BIG PROJECT** and I have coded everything to assume your outputs use a character for the experiment number (the `exper_n` column), of the form "01", "02", etc. It looks like you are using numbers. Can you update your code accordingly? 
 
-Would your code be easy to adjust to satisfy this request? Would you need to re-run any steps that aren't associated with this naming choice? 
+Would your code be easy to adjust to satisfy this request? Would you need to re-run any steps that aren't associated with this naming choice? Did the use of a dependency management solution allow you to both make the change efficiently (i.e., by avoiding rebuilding any unnecessary parts of the pipeline) and increase your confidence in delivering the results?
 
 ---
 
