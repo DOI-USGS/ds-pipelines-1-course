@@ -1,4 +1,5 @@
-So, what does this do for you? Well, if you had this `remake.yml` file in your current working directory, and the `download_data()`, `process_data()`, and `myplot()` functions were in `code.R` (which you don't), it would look like this when you run `scmake` from the `scipiper` package
+
+So, what does this do for you? Well, if you had this `remake.yml` file in your current working directory (which you do), and you had defined the `download_data()`, `process_data()`, and `myplot()` functions in `code.R` (which you haven't), it would look like this when you ran `scmake` from the `scipiper` package:
 
 ![scmake run image](https://user-images.githubusercontent.com/2349007/81699123-8c355a00-942c-11ea-8919-4ff4bccfb1e8.png)
 
