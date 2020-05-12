@@ -8,13 +8,13 @@ The real power of depedency management is when something changes - that's the EU
 
 In the meantime, here are a few nice tricks given you have a functional pipeline. 
 
-- [ ] run `remake::make()` again. What happens? Hopefully not much. I see this: 
-![remake all is fresh](https://user-images.githubusercontent.com/2349007/81510652-0ead0500-92d9-11ea-8e16-280f2051e709.png)
+- [ ] run `scmake()` again. What happens? Hopefully not much. I see this: 
+![make all is fresh](https://user-images.githubusercontent.com/2349007/81510652-0ead0500-92d9-11ea-8e16-280f2051e709.png)
 Which means everthing is up to date so all targets are :OK:
 
-- [ ] access the `processed` target by using `processed_data <- remake::make('processed')`. Here we are using the first argument of `make()`, which is `target_names`. Any vector of targets used will be build (default is to build the `all` target in the case where no target names were specified). We can access the output of the target by assigning the result to a variable. Here we have called that variable `processed_data`, and it looks like a data.frame. If you assign the result of a file target, like `file_name <- remake::make(target_names = 'model_RMSEs.csv')`, the result is the path to that file. 
+- [ ] access the `processed` target by using `processed_data <- scmake('processed')`. Here we are using the first argument of `make()`, which is `target_names`. Any vector of targets used will be build (default is to build the `all` target in the case where no target names were specified). We can access the output of the target by assigning the result to a variable. Here we have called that variable `processed_data`, and it looks like a data.frame. If you assign the result of a file target, like `file_name <- scmake(target_names = 'model_RMSEs.csv')`, the result is the path to that file. 
 
-- [ ] now try making a change to one of your functions in your code. What happens after running `remake::make()` then? 
+- [ ] now try making a change to one of your functions in your code. What happens after running `scmake()` then? 
 
 --- 
 
