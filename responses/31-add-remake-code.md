@@ -1,4 +1,4 @@
-So, what does this do for you? Well, if you had this `remake.yml` file in your current working directory, and the `download_data()`, `process_data()`, and `myplot()` functions were in `code.R` (which you don't), it would look like this when you run `make` from the `remake` package
+So, what does this do for you? Well, if you had this `remake.yml` file in your current working directory (which you do), and you had defined the `download_data()`, `process_data()`, and `myplot()` functions in `code.R` (which you haven't), it would look like this when you ran `make` from the `remake` package:
 
 ![remake run image](https://user-images.githubusercontent.com/2349007/81447341-15edda80-9142-11ea-8321-c490cb6cb9ef.png)
 
