@@ -9,12 +9,12 @@ The real power of depedency management is when something changes - that's the EU
 In the meantime, here are a few nice tricks given you have a functional pipeline. 
 
 - [ ] run `scmake()` again. What happens? Hopefully not much. I see this: 
-![make all is fresh](https://user-images.githubusercontent.com/2349007/81510652-0ead0500-92d9-11ea-8e16-280f2051e709.png)
+![make all is fresh](https://user-images.githubusercontent.com/2349007/82728169-763d5a00-9cb4-11ea-8ab2-ee75927b5c7e.png)
 Which means everthing is up to date so all targets are :OK:
 
 - [ ] now try making a change to one of your functions in your code. What happens after running `scmake()` then? 
 
-- [ ] access the `processed` target by using `processed_data <- scmake('processed')`. (You may or may not have an R-object target named `processed` in your own repo at this point, so go ahead and try it with some target that you do have.) Here we are using the first argument of `make()`, which is `target_names`. Any vector of targets used will be built (the default is to build the `all` target in the case where no target names were specified). We can access the output of the target by assigning the result to a variable. In this example, we have called that variable `processed_data`, and it receives output from `scmake` in the form of a data.frame because that's what our example function `process_data()` creates. If you assign the result of a file target, like `file_name <- scmake(target_names = '1_fetch/out/model_RMSEs.csv')`, the result is the path to that file.
+- [ ] access the `plot_data` target by using `plot_data <- scmake('plot_data')`. (You may or may not have an R-object target named `plot_data` in your own repo at this point, so go ahead and try it with some target that you do have.) Here we are using the first argument of `scmake()`, which is `target_names`. Any vector of targets used will be built (the default is to build the `all` target in the case where no target names were specified). We can access the output of the target by assigning the result to a variable. In this example, we have called that variable `plot_data`, and it receives output from `scmake` in the form of a data.frame because that's what our example function `process_data()` creates. If you assign the result of a file target, like `file_name <- scmake(target_names = '1_fetch/out/model_RMSEs.csv')`, the result is the path to that file.
 
 - [ ] now try making a change to the `template_1` variable in your function that creates the .txt file. What happens after running `scmake()` then? Which targets get rebuilt and which do not? 
 

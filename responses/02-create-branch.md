@@ -18,7 +18,7 @@ By using `checkout`, you have switched your local branch from "master" to "struc
 While you are at it, this is a good time to invite a few collaborators to your repository, which will make it easier to assign them as reviewers in the future. In the :gear: Settings widget at the top of [your repo]({{ repoUrl }}), select "Manage access". Go ahead and invite your cohort coworkers, aappling-usgs, and jread-usgs. It should look something like this: 
 ![add some friends](https://user-images.githubusercontent.com/2349007/81471981-c0094900-91ba-11ea-93b0-0ffd31ec4ea9.png)
 
-Close this issue when you've successfully pushed your branch to remote and added some collaborators.
+Close this issue when you've successfully pushed your branch to remote and added some collaborators. (A successful push of the branch will result in a message that looks like this `"Branch 'structure' set up to track remote branch 'structure' from 'origin'"`)
 
 <hr>
 <h3 align="center">I'll send you to the next issue once you've closed this one.</h3>
