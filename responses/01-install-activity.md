@@ -13,6 +13,12 @@ install.packages(c("R6", "yaml", "digest", "crayon", "optparse", "storr", "remot
 remotes::install_github('richfitz/remake')
 ```
 
+While you are at it, please install a few other packages that you'll use along the way:
+
+```r
+install.packages(c("dplyr", "readr", "stringr", "sbtools", "whisker", "dataRetrieval", "ggplot2", "purrr"))
+```
+
 Next, install `scipiper`
 ```r
 remotes::install_github('USGS-R/scipiper')
