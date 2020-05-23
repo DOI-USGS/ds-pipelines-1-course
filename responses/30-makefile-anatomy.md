@@ -76,7 +76,7 @@ targets:
 then use `Ctrl+D` to exit the file creation mode and return to the prompt. 
 
 ---
-Finally, create a [pull request]({{ repoUrl }}/pulls) that includes this new file (should be called `remake.yml`).
+Finally, create a [pull request]({{ repoUrl }}/pulls) that includes this new file (the file should be called `remake.yml`).
 
 <hr>
 <h3 align="center">When I see your pull request, I'll make some in-line suggestions for next steps.</h3>
