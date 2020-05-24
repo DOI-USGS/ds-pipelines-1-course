@@ -36,4 +36,4 @@ Below you will find some quick links that can help you review the content covere
 - [Decompose code into functions, structure folders descriptively]({{ store.structure_activity_url }})
 - [Videos on dependency managers]({{ store.why_dependency_management_issue_url }})
 - [The anatomy of a remakefile]( {{ store.makefile_anatomy_url }})
-- [Seeing "skip the work you don’t need" in action]({{ store.skip_activity_url }})
+
