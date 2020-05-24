@@ -1,6 +1,6 @@
 Data analyses are often complex. Data pipelines are ways of managing that complexity. Our data pipelines have two foundational pieces:
 
-* Good organization of code scripts helps you quickly find the file you need, whether you or a teammate created it.
+* Good organization of code scripts help you quickly find the file you need, whether you or a teammate created it.
 
 * Dependency managers such as `remake`, `scipiper`, and `drake` formalize the relationships among the datasets and functions to ensure reproducibility while also minimizing the amount of unnecessary runtime as you're creating or modifying parts of the pipeline.
 

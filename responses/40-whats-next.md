@@ -29,3 +29,11 @@ Would your code be easy to adjust to satisfy this request? Would you need to re-
 ---
 
 ### You have completed introductions to pipelines I. Great work!
+
+Below you will find some quick links that can help you review the content covered here
+
+- [How to create a branch]({{ store.branch_issue_url }})
+- [Decompose code into functions, structure folders descriptively]({{ store.structure_activity_url }})
+- [Videos on dependency managers]({{ store.why_dependency_management_issue_url }})
+- [The anatomy of a remakefile]( {{ store.makefile_anatomy_url }})
+- [Seeing "skip the work you don’t need" in action]({{ store.skip_activity_url }})
