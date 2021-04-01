@@ -29,14 +29,14 @@ steps:
     event: issue_comment.created
     actions:
       - type: gate
-        left: USGS Support Package
+        left: Error in packageVersion
         operator: test
         right: '%payload.comment.body%'
         else:
           - type: respond
-            with: 01a-install-fail.md
+            with: 01b-install-success.md
       - type: respond
-        with: 01b-install-success.md
+        with: 01a-install-fail.md
       - type: closeIssue
       - type: createIssue
         title: Create a branch in your code repository
