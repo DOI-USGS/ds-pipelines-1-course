@@ -99,9 +99,9 @@ steps:
     event: issue_comment.created
     actions:
       - type: respond
-        with: 20a-watch-drake.md
+        with: 20a-watch-targets.md
   - title: Why use a dependency manager specifically for R?
-    description: Read and watch about the benefits of formal dependency management
+    description: Read and watch about the benefits of formal dependency management in R
     link: '{{ store.why_dependency_management_issue_url }}'
     event: issues.closed
     actions:
