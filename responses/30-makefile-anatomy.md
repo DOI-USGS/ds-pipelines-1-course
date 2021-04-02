@@ -33,16 +33,16 @@ list(
 ```
 
 
-This file defines the relationships between different "targets" (see how the target `model_RMSEs_csv` is an input to the command that creates the target `plot_data`?), tells us where to find any functions that are used to build targets (see the `source` call that points you to `code.R`), and declares the package dependencies needed to build the different targets (see the `target_option_set` command that passes in a vector of packages). 
+This file defines the relationships between different "targets" (see how the target `model_RMSEs_csv` is an input to the command that creates the target `plot_data`?), tells us where to find any functions that are used to build targets (see the `source` call that points you to `code.R`), and declares the package dependencies needed to build the different targets (see the `target_option_set()` command that passes in a vector of packages). 
 
 We'll briefly explain some of the functions and conventions used here. For more extensive explanations, visit [the `targets` documentation](https://books.ropensci.org/targets/walkthrough.html). 
 
   - As you would with normal R scripts, put any `source` commands for loading R files and `library` commands for loading packages at the top of the file. The packages loaded here should be only those needed to build the targets _plan_; packages needed to build specific _targets_ can be loaded later.
   - Declare each target by using the function `tar_target()` and passing in a target name (`name` arg) and the expression to run to build the target (`command` arg).
-  - There are two types of targets - objects and files. If your target is a file, you need to add `format = "file"` to your `tar_targets` call and the command needs to return the filename of the new file.
+  - There are two types of targets - objects and files. If your target is a file, you need to add `format = "file"` to your `tar_target()` call and the command needs to return the filename of the new file.
   - Setup the full pipeline by combining all targets into a single `list` object.
-  - There are 2 ways to define packages used by targets: 1) declare using the `packages` argument in `tar_option_set()` in your makefile to specify packages used by all targets or 2) use the `packages` argument in individual `tar_target()` functions for packages that may be special to specific targets.
-  - `model_RMSEs_csv` shows up two times, why? `model_RMSEs_csv` is the name of a target that creates the file, `model_RMSEs.csv`, when the command `download_data()` is run. When passed in as input to other functions (unquoted), it represents the filename of the file that was created when it was built. So when `model_RMSEs_csv` shows up as an _input_ to another function, `process_data()`, it is really passing in the filename. So the `process_data` function must read and then change the data (or "process" it) in some way. 
+  - There are 2 ways to define packages used to build targets: 1) declare using the `packages` argument in `tar_option_set()` in your makefile to specify packages used by all targets or 2) use the `packages` argument in individual `tar_target()` functions for packages that are specific to those targets.
+  - `model_RMSEs_csv` shows up two times - why? `model_RMSEs_csv` is the name of a target that creates the file `model_RMSEs.csv` when the command `download_data()` is run. When passed in as input to other functions (unquoted), it represents the filename of the file that was created when it was built. So when `model_RMSEs_csv` shows up as an _argument_ to another function, `process_data()`, it is really passing in the filename. The `process_data()` function then reads the files and changes the data (or "processes" it) in some way. 
   
 ---
 
