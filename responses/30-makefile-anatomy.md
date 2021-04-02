@@ -1,4 +1,4 @@
-Our `targets` pipelines in R use a `makefile` file to "orchestrate" the connections among files, functions, and phases. In this issue, we're going to develop a basic understanding of how these files work, starting with the anatomy of the `_targets.R` file.
+Our `targets` pipelines in R use a `makefile` file to orchestrate the connections among files, functions, and phases. In this issue, we're going to develop a basic understanding of how these files work, starting with the anatomy of the `_targets.R` file.
 
 #### Setting up a `targets` data science pipeline
 
@@ -38,11 +38,11 @@ This file defines the relationships between different "targets" (see how the tar
 We'll briefly explain some of the functions and conventions used here. For more extensive explanations, visit [the `targets` documentation](https://books.ropensci.org/targets/walkthrough.html). 
 
   - As you would with normal R scripts, put any `source` commands for loading R files and `library` commands for loading packages with functions used by subsequent code at the top of the file. 
-  - Declare each target by using the function `tar_target` and passing in a target name (`name` arg) and the expression to run to build the target (`command` arg).
+  - Declare each target by using the function `tar_target()` and passing in a target name (`name` arg) and the expression to run to build the target (`command` arg).
   - There are two types of targets - objects and files. If your target is a file, you need to add `format = "file"` to your `tar_targets` call and the command needs to return the filename of the new file.
   - Setup the full pipeline by combining all targets into a single `list` object.
-  - There are 2 ways to define packages used by targets: 1) declare using the `packages` argument in `tar_option_set` in your makefile to specify packages used by all targets or 2) use the `packages` argument in individual `tar_target` functions for packages that may be special to specific targets.
-  - `model_RMSEs_csv` shows up two times, why? `model_RMSEs_csv` is the name of a target that creates the file, `model_RMSEs.csv`, when the command `download_data` is run. When passed in as input to other functions (unquoted), it represents the filename of the file that was created when it was built. So when `model_RMSEs_csv` shows up as an _input_ to another function, `process_data`, it is really passing in the filename. So the `process_data` function must read and then change the data (or "process" it) in some way. 
+  - There are 2 ways to define packages used by targets: 1) declare using the `packages` argument in `tar_option_set()` in your makefile to specify packages used by all targets or 2) use the `packages` argument in individual `tar_target()` functions for packages that may be special to specific targets.
+  - `model_RMSEs_csv` shows up two times, why? `model_RMSEs_csv` is the name of a target that creates the file, `model_RMSEs.csv`, when the command `download_data()` is run. When passed in as input to other functions (unquoted), it represents the filename of the file that was created when it was built. So when `model_RMSEs_csv` shows up as an _input_ to another function, `process_data()`, it is really passing in the filename. So the `process_data` function must read and then change the data (or "process" it) in some way. 
   
 ---
 
@@ -91,6 +91,5 @@ Finally, create a [pull request]({{ repoUrl }}/pulls) that includes this new fil
 
 <hr>
 <h3 align="center">When I see your pull request, I'll make some in-line suggestions for next steps.</h3>
-
 
 

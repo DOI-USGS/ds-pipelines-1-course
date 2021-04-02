@@ -1,6 +1,6 @@
 Great comments @{{ user.username }}! :sparkles:
 
-You could consider [GNU make](https://www.gnu.org/software/make/) to be a great grandparent of the packages we referred to early in this lesson (`remake`, `scipiper`, `drake`, and `targets`). The lead of `targets` has added a lot of useful features to dependency management systems in R, and has a great way of summarizing why we put energy into using these tools. **"Skip the work you don't need"**
+You could consider [GNU make](https://www.gnu.org/software/make/) to be a great grandparent of the packages we referred to early in this lesson (`remake`, `scipiper`, `drake`, and `targets`). Will Landau, the lead developer of `targets`, has added a lot of useful features to dependency management systems in R, and has a great way of summarizing why we put energy into using these tools: **"Skip the work you don't need"**
 
 We'd like you to next check out a short part of Will's video on `targets`
 
@@ -9,6 +9,6 @@ We'd like you to next check out a short part of Will's video on `targets`
 
 ### :tv: Activity: watch video on targets from at least 7:20 to 11:05 (you are welcome to watch the full main talk from 7:20 to 7:40)
 
-Use a github comment on this issue to let us know what contrasts you identified between solutions in `make` and what is offered in R-specific tools, like `targets`. Please use less than 300 words. Then assign your onboarding cohort team member this issue to read what you wrote. When they are done, welcome them to comment with any questions or comments.   
+Use a github comment on this issue to let us know what contrasts you identified between solutions in `make` and what is offered in R-specific tools, like `targets`. Please use less than 300 words. Then assign your onboarding cohort team member this issue to read what you wrote and respond with any questions or comments.   
 
 <hr><h3 align="center">When you are satisfied with the discussion, you can close this issue and I'll direct you to the next one.</h3>
