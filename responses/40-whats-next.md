@@ -9,7 +9,7 @@ The real power of depedency management is when something changes - that's the EU
 In the meantime, here are a few nice tricks given you have a functional pipeline. 
 
 - [ ] run `tar_make()` again. What happens? Hopefully not much. I see this: 
-![make all is fresh](https://user-images.githubusercontent.com/2349007/82728169-763d5a00-9cb4-11ea-8ab2-ee75927b5c7e.png)
+![make all is fresh](https://user-images.githubusercontent.com/13220910/113453089-eb94b380-93ca-11eb-92b6-25032835c028.png)
 Which means everthing is up to date so all targets are :OK:
 
 - [ ] now try making a change to one of your functions in your code. What happens after running `tar_make()` then? 
